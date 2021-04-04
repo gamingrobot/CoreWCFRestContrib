@@ -1,4 +1,4 @@
-WCFRestContrib.Core
+CoreWCFRestContrib
 =============
 
 This is a port of the WCF REST Contrib library to CoreWCF.
