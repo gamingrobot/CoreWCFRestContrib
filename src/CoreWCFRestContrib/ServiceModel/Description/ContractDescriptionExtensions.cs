@@ -8,33 +8,33 @@ namespace CoreWCFRestContrib.ServiceModel.Description
 {
     public static class ContractDescriptionExtensions
     {
-        public static void LoadContractBehaviors(
-            this ContractDescription contract,
-            string behaviorConfiguration)
-        {
-            if (string.IsNullOrEmpty(behaviorConfiguration)) 
-                throw new ArgumentException("Behavior configuration not specified.");
+        //public static void LoadContractBehaviors(
+        //    this ContractDescription contract,
+        //    string behaviorConfiguration)
+        //{
+        //    if (string.IsNullOrEmpty(behaviorConfiguration)) 
+        //        throw new ArgumentException("Behavior configuration not specified.");
 
-            var serviceBehaviors = 
-                ConfigurationManager.GetServiceBehaviorElement(behaviorConfiguration);
+        //    var serviceBehaviors = 
+        //        ConfigurationManager.GetServiceBehaviorElement(behaviorConfiguration);
 
-            if (serviceBehaviors == null) return;
+        //    if (serviceBehaviors == null) return;
 
-            foreach (var behaviorExtension in serviceBehaviors)
-            {
-                var extension = behaviorExtension.CreateBehavior();
-                if (extension == null) continue;
+        //    foreach (var behaviorExtension in serviceBehaviors)
+        //    {
+        //        var extension = behaviorExtension.CreateBehavior();
+        //        if (extension == null) continue;
 
-                var extensionType = extension.GetType();
-                if (!typeof (IContractBehavior).IsAssignableFrom(extensionType)) continue;
+        //        var extensionType = extension.GetType();
+        //        if (!typeof (IContractBehavior).IsAssignableFrom(extensionType)) continue;
 
-                if (contract.Behaviors.Contains(extensionType))
-                {
-                    contract.Behaviors.Remove(extensionType);
-                }
-                contract.Behaviors.Add((IContractBehavior)extension);
-            }
-        }
+        //        if (contract.Behaviors.Contains(extensionType))
+        //        {
+        //            contract.Behaviors.Remove(extensionType);
+        //        }
+        //        contract.Behaviors.Add((IContractBehavior)extension);
+        //    }
+        //}
 
         public static TBehavior FindBehavior<TBehavior, TAttribute>(
             this ContractDescription contract,
