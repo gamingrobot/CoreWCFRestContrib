@@ -41,12 +41,12 @@ namespace CoreWCFRestContrib.ServiceModel.Description
             Func<TAttribute, TBehavior> convert) 
             where TBehavior : class where TAttribute : class
         {
-            var behavior = contract.Behaviors.Find<TBehavior>();
+            var behavior = contract.ContractBehaviors[typeof(TBehavior)] as TBehavior;
 
             if (behavior == null)
             {
-                var attribute = contract.Behaviors.Find<TAttribute>();
-                if (attribute != null) behavior = convert(attribute);
+                if (contract.ContractBehaviors[typeof(TAttribute)] is TAttribute attribute)
+                    behavior = convert(attribute);
             }
             return behavior;
         }

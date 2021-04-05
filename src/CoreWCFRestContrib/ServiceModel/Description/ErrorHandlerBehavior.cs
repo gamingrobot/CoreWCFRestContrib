@@ -52,10 +52,10 @@ namespace CoreWCFRestContrib.ServiceModel.Description
             var errorHandler = GetErrorHandler();
             if (errorHandler == null) return;
 
-            if (!dispatchRuntime.ChannelDispatcher.ErrorHandlers.Contains(errorHandler))
-                dispatchRuntime.ChannelDispatcher.ErrorHandlers.Add(errorHandler);
+            if (!dispatchRuntime.EndpointDispatcher.ChannelDispatcher.ErrorHandlers.Contains(errorHandler))
+                dispatchRuntime.EndpointDispatcher.ChannelDispatcher.ErrorHandlers.Add(errorHandler);
 
-            foreach (var endpointDispatcher in dispatchRuntime.ChannelDispatcher.Endpoints.
+            foreach (var endpointDispatcher in dispatchRuntime.EndpointDispatcher.ChannelDispatcher.Endpoints.
                             Where(endpointDispatcher => endpointDispatcher.DispatchRuntime.MessageInspectors.
                                 FirstOrDefault(i => i.GetType() == typeof(HttpRequestInformationInspector)) == null))
                 endpointDispatcher.DispatchRuntime.MessageInspectors.Add(new HttpRequestInformationInspector());

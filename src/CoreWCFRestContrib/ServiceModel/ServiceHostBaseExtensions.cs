@@ -141,12 +141,12 @@ namespace CoreWCFRestContrib.ServiceModel
             {
                 if (replaceType != null)
                 {
-                    var exisitingBehavior = endpoint.Behaviors.FirstOrDefault(
+                    var exisitingBehavior = endpoint.EndpointBehaviors.FirstOrDefault(
                         b => b.GetType() == replaceType);
                     if (exisitingBehavior != null)
-                        endpoint.Behaviors.Remove(exisitingBehavior);
+                        endpoint.EndpointBehaviors.Remove(exisitingBehavior);
                 }
-                endpoint.Behaviors.Add(behavior);
+                endpoint.EndpointBehaviors.Add(behavior);
             }
         }
         

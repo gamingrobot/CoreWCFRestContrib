@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using CoreWCF.Description;
 using CoreWCFRestContrib.Collections.Specialized;
+using CoreWCFRestContrib.ServiceModel.Web;
 
 namespace CoreWCFRestContrib.ServiceModel.Description
 {
@@ -72,14 +73,14 @@ namespace CoreWCFRestContrib.ServiceModel.Description
 
         public static string GetRawWebUriTemplate(this OperationDescription operationDescription)
         {
-            var webGetAttribute = operationDescription.Behaviors.Find<WebGetAttribute>();
+            var webGetAttribute = operationDescription.OperationBehaviors[typeof(WebGetAttribute)];
             if (webGetAttribute != null)
             {
                 if (webGetAttribute.UriTemplate != null) return webGetAttribute.UriTemplate;
             }
             else
             {
-                var webInvokeAttribute = operationDescription.Behaviors.Find<WebInvokeAttribute>();
+                var webInvokeAttribute = operationDescription.OperationBehaviors[typeof(WebInvokeAttribute)];
                 if (webInvokeAttribute != null && webInvokeAttribute.UriTemplate != null)
                     return webInvokeAttribute.UriTemplate;
             }

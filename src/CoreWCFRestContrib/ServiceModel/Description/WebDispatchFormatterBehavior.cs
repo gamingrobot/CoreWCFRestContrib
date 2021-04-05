@@ -19,11 +19,10 @@ namespace CoreWCFRestContrib.ServiceModel.Description
         public void ApplyDispatchBehavior(OperationDescription operationDescription, DispatchOperation dispatchOperation)
         {
             var behavior =
-                operationDescription.DeclaringContract.Behaviors.Find
-                    <WebDispatchFormatterConfigurationBehavior>();
+                operationDescription.DeclaringContract.ContractBehaviors[typeof(WebDispatchFormatterConfigurationBehavior)];
 
             if (behavior == null)
-                behavior = dispatchOperation.Parent.ChannelDispatcher.Host.Description.Behaviors.Find
+                behavior = dispatchOperation.Parent.EndpointDispatcher.ChannelDispatcher.Host.Description.Behaviors.Find
                         <WebDispatchFormatterConfigurationBehavior>();
 
             if (behavior == null)
@@ -32,7 +31,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
                     operationDescription.DeclaringContract.GetAttribute<WebDispatchFormatterConfigurationAttribute>();
 
                 if (configurationAttribute == null)
-                    configurationAttribute = dispatchOperation.Parent.ChannelDispatcher.Host.Description.
+                    configurationAttribute = dispatchOperation.Parent.EndpointDispatcher.ChannelDispatcher.Host.Description.
                         GetAttribute<WebDispatchFormatterConfigurationAttribute>();
 
                 string defaultMimeType = null;
@@ -44,7 +43,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
                     operationDescription.DeclaringContract.GetAttributes<WebDispatchFormatterMimeTypeAttribute>();
 
                 if (mimeTypeAttributes == null || mimeTypeAttributes.Count == 0)
-                    mimeTypeAttributes = dispatchOperation.Parent.ChannelDispatcher.Host.Description.
+                    mimeTypeAttributes = dispatchOperation.Parent.EndpointDispatcher.ChannelDispatcher.Host.Description.
                         GetAttributes<WebDispatchFormatterMimeTypeAttribute>();
 
                 var formatters = new Dictionary<string, Type>();

@@ -15,7 +15,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
                 operationDescription.DeclaringContract.FindBehavior
                     <WebAuthenticationConfigurationBehavior,
                      WebAuthenticationConfigurationAttribute>(b => b.BaseBehavior) ??
-                dispatchOperation.Parent.ChannelDispatcher.Host.Description.FindBehavior
+                dispatchOperation.Parent.EndpointDispatcher.ChannelDispatcher.Host.Description.FindBehavior
                     <WebAuthenticationConfigurationBehavior,
                      WebAuthenticationConfigurationAttribute>(b => b.BaseBehavior);
 

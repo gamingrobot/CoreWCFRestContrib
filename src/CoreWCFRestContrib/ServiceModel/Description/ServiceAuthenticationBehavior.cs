@@ -45,7 +45,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
         public void ApplyDispatchBehavior(ContractDescription contractDescription, ServiceEndpoint endpoint, DispatchRuntime dispatchRuntime)
         {
             var behavior = 
-                dispatchRuntime.ChannelDispatcher.Host.Description.FindBehavior
+                dispatchRuntime.EndpointDispatcher.ChannelDispatcher.Host.Description.FindBehavior
                         <WebAuthenticationConfigurationBehavior,
                          WebAuthenticationConfigurationAttribute>(b => b.BaseBehavior);
             
@@ -57,7 +57,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
             if (behavior == null)
                 throw new ServiceAuthenticationConfigurationMissingException();
 
-            foreach (var endpointDispatcher in dispatchRuntime.ChannelDispatcher.Endpoints)
+            foreach (var endpointDispatcher in dispatchRuntime.EndpointDispatcher.ChannelDispatcher.Endpoints)
                 endpointDispatcher.DispatchRuntime.MessageInspectors.Add(
                     new ServiceAuthenticationInspector(
                         behavior.ThrowIfNull().AuthenticationHandler,
