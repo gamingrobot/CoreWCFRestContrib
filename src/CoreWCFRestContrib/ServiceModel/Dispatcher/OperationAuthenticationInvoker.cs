@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CoreWCF;
 using CoreWCF.Dispatcher;
 using CoreWCFRestContrib.ServiceModel.Web;
@@ -30,7 +31,7 @@ namespace CoreWCFRestContrib.ServiceModel.Dispatcher
         public object[] AllocateInputs()
         { return _invoker.AllocateInputs(); }
 
-        public object Invoke(object instance, object[] inputs, out object[] outputs)
+        public ValueTask<(object returnValue, object[] outputs)> InvokeAsync(object instance, object[] inputs)
         {
             OperationContext.Current.ThrowIfNull().ReplacePrimaryIdentity(
                 _handler.Authenticate(
@@ -42,7 +43,7 @@ namespace CoreWCFRestContrib.ServiceModel.Dispatcher
                     _requiresTransportLayerSecurity,
                     _source));
 
-            return _invoker.Invoke(instance, inputs, out outputs);
+            return _invoker.InvokeAsync(instance, inputs);
         }
 
         public IAsyncResult InvokeBegin(object instance, object[] inputs, 

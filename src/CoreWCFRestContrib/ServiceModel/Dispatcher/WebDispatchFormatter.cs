@@ -2,6 +2,7 @@
 using CoreWCF;
 using CoreWCF.Channels;
 using CoreWCF.Description;
+using CoreWCF.Dispatcher;
 using CoreWCFRestContrib.ServiceModel.Channels;
 using CoreWCFRestContrib.ServiceModel.Description;
 using CoreWCFRestContrib.ServiceModel.Web;
