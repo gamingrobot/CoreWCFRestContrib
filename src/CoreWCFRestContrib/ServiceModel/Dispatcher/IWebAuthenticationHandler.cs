@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
+using CoreWCFRestContrib.ServiceModel.Web;
 
 namespace CoreWCFRestContrib.ServiceModel.Dispatcher
 {

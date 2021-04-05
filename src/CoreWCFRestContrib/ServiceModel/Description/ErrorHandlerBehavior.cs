@@ -8,6 +8,7 @@ using CoreWCF.Description;
 using CoreWCF.Dispatcher;
 using CoreWCFRestContrib.DependencyInjection;
 using CoreWCFRestContrib.Net.Http;
+using CoreWCFRestContrib.ServiceModel.Web;
 
 namespace CoreWCFRestContrib.ServiceModel.Description
 {

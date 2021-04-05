@@ -66,7 +66,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
             }
 
             if (behavior == null)
-                throw new ConfigurationErrorsException(
+                throw new InvalidOperationException(
                     "WebDispatchFormatterConfigurationBehavior or WebDispatchFormatterMimeTypeAttribute's not applied to contract or service. This behavior or attributes are required to configure web dispatch formatting.");
 
             dispatchOperation.Formatter = 

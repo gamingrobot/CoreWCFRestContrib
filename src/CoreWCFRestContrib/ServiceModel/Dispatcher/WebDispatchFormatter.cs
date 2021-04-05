@@ -4,6 +4,7 @@ using CoreWCF.Channels;
 using CoreWCF.Description;
 using CoreWCFRestContrib.ServiceModel.Channels;
 using CoreWCFRestContrib.ServiceModel.Description;
+using CoreWCFRestContrib.ServiceModel.Web;
 using CoreWCFRestContrib.ServiceModel.Web.Exceptions;
 using CoreWCFRestContrib.Xml;
 

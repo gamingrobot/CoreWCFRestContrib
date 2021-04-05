@@ -32,7 +32,7 @@ namespace CoreWCFRestContrib.ServiceModel.Web
                 }
 
                 this.ReplaceBehaviorOnAllEndpoints(
-                    typeof (System.ServiceModel.Description.WebHttpBehavior),
+                    typeof (WebHttpBehavior),
                     new WebHttpBehavior(
                         ServiceConfigurationAttribute.CustomErrorHandler));
 

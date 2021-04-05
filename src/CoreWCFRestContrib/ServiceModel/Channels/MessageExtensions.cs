@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using CoreWCF.Channels;
+using CoreWCFRestContrib.ServiceModel.Web;
 
 namespace CoreWCFRestContrib.ServiceModel.Channels
 {

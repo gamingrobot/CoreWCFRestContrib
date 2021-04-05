@@ -1,6 +1,6 @@
 ﻿namespace CoreWCFRestContrib.ServiceModel.Web
 {
-    public static class IncomingWebRequestContextExtensions
+    internal static class IncomingWebRequestContextExtensions
     {
         public static string[] GetAcceptTypes(this IncomingWebRequestContext context)
         {

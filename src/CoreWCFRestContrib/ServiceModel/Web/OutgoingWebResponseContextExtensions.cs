@@ -1,6 +1,6 @@
 ﻿namespace CoreWCFRestContrib.ServiceModel.Web
 {
-    public static class OutgoingWebResponseContextExtensions
+    internal static class OutgoingWebResponseContextExtensions
     {
         public static void Redirect(this OutgoingWebResponseContext context, string url)
         {

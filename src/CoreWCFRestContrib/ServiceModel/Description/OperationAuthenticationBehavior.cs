@@ -1,4 +1,5 @@
-﻿using CoreWCF.Channels;
+﻿using System;
+using CoreWCF.Channels;
 using CoreWCF.Description;
 using CoreWCF.Dispatcher;
 using CoreWCFRestContrib.ServiceModel.Dispatcher;
@@ -19,7 +20,7 @@ namespace CoreWCFRestContrib.ServiceModel.Description
                      WebAuthenticationConfigurationAttribute>(b => b.BaseBehavior);
 
             if (behavior == null)
-                throw new ConfigurationErrorsException(
+                throw new InvalidOperationException(
                     "OperationAuthenticationConfigurationBehavior not applied to contract or service. This behavior is required to configure operation authentication.");
 
             dispatchOperation.Invoker = new OperationAuthenticationInvoker(

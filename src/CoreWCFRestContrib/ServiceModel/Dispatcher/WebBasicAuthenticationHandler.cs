@@ -3,6 +3,7 @@ using System.Security.Principal;
 using CoreWCF.IdentityModel.Selectors;
 using CoreWCFRestContrib.DependencyInjection;
 using CoreWCFRestContrib.Net.Http;
+using CoreWCFRestContrib.ServiceModel.Web;
 using CoreWCFRestContrib.ServiceModel.Web.Exceptions;
 
 namespace CoreWCFRestContrib.ServiceModel.Dispatcher

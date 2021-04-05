@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using CoreWCF.Dispatcher;
+using CoreWCFRestContrib.ServiceModel.Web;
 
 namespace CoreWCFRestContrib.ServiceModel.Dispatcher
 {
